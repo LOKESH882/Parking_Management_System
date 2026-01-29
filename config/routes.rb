@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   post "park", to: "parking#park"
   post "unpark", to: "parking#unpark"
   get "available_slots", to:"parking#available_slots"
+  get "occupied_slots", to:"parking#occupied_slots"
   
 end
