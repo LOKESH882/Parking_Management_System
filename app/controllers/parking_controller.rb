@@ -8,6 +8,8 @@ class ParkingController < ApplicationController
 
     slot = ParkingSlot.where(status: "available").first
 
+    # slot = ParkingSlot.available.first
+
     if slot.nil?
       render json: { message: "No Slot Available" }
       return
@@ -18,7 +20,7 @@ class ParkingController < ApplicationController
     render json: {
       message: "Vehicle parked",
       slot: slot.slot_number
-    }, status: :created
+    }
   end
 
   def unpark
@@ -34,11 +36,17 @@ class ParkingController < ApplicationController
     render json: {
       message: "Vehicle unparked",
       slot: slot.slot_number
-    }, status: :ok
+    }
   end
 
   def available_slots
     slots = ParkingSlot.where(status: "available")
-    render json: slots, status: :ok
+    render json: slots
   end
+
+  def occupied_slots
+    slots = ParkingSlot.where(status: "occupied")
+    render json: slots
+  end
+  
 end

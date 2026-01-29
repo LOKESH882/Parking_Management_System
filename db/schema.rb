@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_28_101355) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_29_080358) do
   create_table "parking_slots", force: :cascade do |t|
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil
     t.string "slot_number"
-    t.string "status"
-    t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.integer "vehicle_id"
   end
 
   create_table "vehicles", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "vehicle_number"
-    t.string "vehicle_type"
+    t.integer "vehicle_type"
   end
 end
